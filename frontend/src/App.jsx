@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Home from './components/Home'
@@ -12,6 +11,10 @@ import Blogs from './components/Blogs'
 import Contactus from './components/Contactus'
 import Login from './components/Login'
 import Registration from './components/Registration'
+import Services1 from './components/services1'
+import Services2 from './components/service2'
+import Services3 from './components/service3'
+import GoToTop from './components/GoToTop'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,7 +31,11 @@ function App() {
       <Route path='/contactus' element={<Contactus/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/registration' element={<Registration/>}/>
+      <Route path='/services1' element={<Services1/>}/>
+      <Route path='/services2' element={<Services2/>}/>
+      <Route path='/services3' element={<Services3/>}/>
     </Routes>
+    <GoToTop />
     </BrowserRouter>
     </>
   )
@@ -36,3 +43,4 @@ function App() {
 
 
 export default App
+

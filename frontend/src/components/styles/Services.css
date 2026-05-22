@@ -1,0 +1,553 @@
+/* --- Page & Background Grid System --- */
+.services-page-wrapper {
+    position: relative;
+    background-color: #1D436B;
+    padding-top: 110px; /* Space for the fixed header */
+    padding-bottom: 80px;
+    overflow-x: hidden;
+    color: #f5f9ff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* --- Animated Background Grid Dots (Slow Pulsing & Glowing) --- */
+.ambient-dots-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.ambient-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #38bdf8;
+    border-radius: 50%;
+    filter: blur(0.5px) drop-shadow(0 0 6px #38bdf8);
+    opacity: 0.4;
+    animation: pulseDot 4.5s infinite ease-in-out;
+}
+
+/* Alternate dot colors for a sparkling cosmic impression */
+.ambient-dot:nth-child(even) {
+    background-color: #ec4899;
+    filter: blur(0.5px) drop-shadow(0 0 6px #ec4899);
+}
+
+@keyframes pulseDot {
+    0%, 100% {
+        transform: scale(0.7);
+        opacity: 0.15;
+        filter: blur(0.5px) drop-shadow(0 0 3px rgba(56, 189, 248, 0.2));
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.95;
+        filter: blur(0.5px) drop-shadow(0 0 12px rgba(56, 189, 248, 0.95));
+    }
+}
+
+/* Precise grid dot coordinates aligning with 60px grid intersections */
+.dot-1 { top: 12%; left: 15%; animation-delay: 0s; animation-duration: 5.2s; }
+.dot-2 { top: 18%; left: 80%; animation-delay: 1.5s; animation-duration: 5.8s; }
+.dot-3 { top: 35%; left: 25%; animation-delay: 0.5s; animation-duration: 4.5s; }
+.dot-4 { top: 48%; left: 70%; animation-delay: 2.2s; animation-duration: 6.2s; }
+.dot-5 { top: 62%; left: 18%; animation-delay: 1s; animation-duration: 5.5s; }
+.dot-6 { top: 70%; left: 85%; animation-delay: 2.8s; animation-duration: 6s; }
+.dot-7 { top: 82%; left: 30%; animation-delay: 0.3s; animation-duration: 4.8s; }
+.dot-8 { top: 92%; left: 75%; animation-delay: 3.5s; animation-duration: 6.5s; }
+
+/* --- Section Layout --- */
+.services-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- Subtitle & Badge Styling --- */
+.badge-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.services-badge {
+    background: rgba(30, 144, 255, 0.1);
+    border: 1px solid rgba(30, 144, 255, 0.25);
+    color: #38bdf8;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+}
+
+.services-title {
+    font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+    text-align: center;
+    font-weight: 800;
+    margin: 0 0 16px;
+    color: #ffffff;
+    line-height: 1.15;
+}
+
+.services-title span {
+    color: #38bdf8;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+}
+
+.services-subtitle-desc {
+    text-align: center;
+    font-size: clamp(1rem, 1.3vw, 1.25rem);
+    max-width: 720px;
+    margin: 0 auto 50px;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+/* --- Section 1: 8-Grid of Service Cards (Dark Cyber-Glassmorphism) --- */
+.grid-8-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 20px;
+}
+
+/* 3D dark glassmorphic grid cards */
+.grid-card {
+    background: rgba(10, 20, 45, 0.68);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.grid-card:hover {
+    transform: translateY(-12px) rotateX(6deg) rotateY(-6deg);
+    box-shadow: 0 25px 50px rgba(56, 189, 248, 0.28), 0 15px 32px rgba(0, 0, 0, 0.35);
+    border-color: #38bdf8;
+}
+
+.grid-card-icon-wrap,
+.grid-card-title,
+.grid-card-desc {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grid-card:hover .grid-card-icon-wrap {
+    transform: translateZ(25px) scale(1.1) rotate(5deg);
+}
+
+.grid-card:hover .grid-card-title {
+    transform: translateZ(15px);
+}
+
+.grid-card:hover .grid-card-desc {
+    transform: translateZ(10px);
+}
+
+.grid-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.15), transparent);
+    transform: skewX(-25deg);
+    transition: 0.75s;
+}
+
+.grid-card:hover::before {
+    left: 150%;
+}
+
+.grid-card-icon-wrap {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(30, 90, 255, 0.05) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.grid-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff; /* Bright white for high readability in dark theme */
+    margin: 0 0 10px;
+    line-height: 1.3;
+}
+
+.grid-card-desc {
+    font-size: 0.92rem;
+    color: #94a3b8; /* Slate-blue gray description */
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- Section 2: Showcase Rows --- */
+.showcase-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.showcase-row {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    background: rgba(10, 20, 45, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 32px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 50px;
+    align-items: center;
+    transition: box-shadow 0.5s, border-color 0.5s, transform 0.5s;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.showcase-row.reversed {
+    grid-template-columns: 0.9fr 1.1fr;
+}
+
+.showcase-row:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 35px 80px rgba(30, 144, 255, 0.18), 0 20px 45px rgba(0, 0, 0, 0.45);
+    transform: translateY(-4px);
+}
+
+.showcase-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.showcase-subtitle {
+    font-size: 0.85rem;
+    color: #38bdf8;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+}
+
+.showcase-row-title {
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 18px;
+    line-height: 1.15;
+}
+
+.showcase-row-title span {
+    color: #38bdf8;
+}
+
+.showcase-desc {
+    font-size: 1.05rem;
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin: 0 0 30px;
+}
+
+/* --- Cohesive Color Palette for All CTA Buttons --- */
+.showcase-btn, 
+.grid-card-btn,
+.submit-btn {
+    background: linear-gradient(135deg, #1e57e6 0%, #0093e9 100%) !important;
+    border: none !important;
+    padding: 14px 36px !important;
+    border-radius: 50px !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    cursor: pointer !important;
+    box-shadow: 0 15px 30px rgba(30, 144, 255, 0.3) !important;
+    transition: transform 0.25s, box-shadow 0.25s, filter 0.2s !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.showcase-btn:hover,
+.grid-card-btn:hover,
+.submit-btn:hover {
+    transform: translateY(-2px) !important;
+    filter: brightness(1.1) !important;
+    box-shadow: 0 20px 40px rgba(30, 144, 255, 0.45) !important;
+}
+
+/* --- Visual Showcase Images --- */
+.showcase-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.showcase-img {
+    width: 100%;
+    max-width: 440px;
+    height: 300px;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    object-fit: cover;
+}
+
+.showcase-row:hover .showcase-img {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* --- Section 3: Smooth Interactive Carousel (Dark Cyber-Glassmorphism) --- */
+.carousel-outer-wrapper {
+    position: relative;
+    padding: 20px 0 40px;
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+/* 3D dark glassmorphic carousel cards */
+.carousel-card {
+    flex: 0 0 calc(33.333% - 20px);
+    box-sizing: border-box;
+    background: rgba(10, 20, 45, 0.72);
+    border-radius: 28px;
+    padding: 36px 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
+    color: #ffffff;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.carousel-card:hover {
+    transform: translateY(-8px) rotateX(4deg) rotateY(-4deg);
+    border-color: #38bdf8;
+    box-shadow: 0 28px 55px rgba(56, 189, 248, 0.25), 0 20px 35px rgba(0,0,0,0.35);
+}
+
+.carousel-card-icon,
+.carousel-card-title,
+.carousel-card-desc,
+.carousel-card-link {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.carousel-card:hover .carousel-card-icon {
+    transform: translateZ(20px);
+}
+
+.carousel-card:hover .carousel-card-title {
+    transform: translateZ(12px);
+}
+
+.carousel-card:hover .carousel-card-desc {
+    transform: translateZ(8px);
+}
+
+.carousel-card:hover .carousel-card-link {
+    transform: translateZ(10px);
+}
+
+.carousel-card-icon {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(30, 90, 255, 0.06) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.carousel-card-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 12px;
+    line-height: 1.3;
+}
+
+.carousel-card-desc {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin: 0 0 24px;
+    flex-grow: 1;
+}
+
+.carousel-card-link {
+    color: #38bdf8;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s, color 0.2s, transform 0.4s;
+}
+
+.carousel-card-link:hover {
+    gap: 10px;
+    color: #0093e9;
+}
+
+/* Carousel Control Panels */
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.carousel-arrow {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-arrow:hover {
+    background: rgba(30, 144, 255, 0.85);
+    border-color: #38bdf8;
+    transform: scale(1.05);
+}
+
+.carousel-arrow:active {
+    transform: scale(0.95);
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.carousel-dot.active {
+    background: #38bdf8;
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+}
+
+/* --- Responsive Adaptations --- */
+
+@media (max-width: 1100px) {
+    .grid-8-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .carousel-card {
+        flex: 0 0 calc(50% - 15px);
+    }
+}
+
+@media (max-width: 992px) {
+    .showcase-row,
+    .showcase-row.reversed {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 36px;
+    }
+    
+    .showcase-visual {
+        order: -1; /* Place visual graphic above information on mobile tablets */
+    }
+    
+    .showcase-info {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .showcase-btn {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-8-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .carousel-card {
+        flex: 0 0 100%;
+    }
+    
+    .services-page-wrapper {
+        padding-top: 90px;
+    }
+    
+    .services-section {
+        padding: 40px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-8-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .grid-card {
+        padding: 24px 18px;
+    }
+}

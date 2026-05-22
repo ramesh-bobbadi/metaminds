@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #1f4a7a 0%, #2d5a8c 50%, #1a3a5c 100%);
+    background: linear-gradient(180deg, #13284e 0%, #0b1732 62%, #081126 100%);
     padding: 100px 24px 80px;
     overflow: hidden;
     margin-top: 100px;
@@ -58,7 +58,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #1f4a7a 0%, #2d5a8c 50%, #1a3a5c 100%);
+    background: linear-gradient(180deg, #13284e 0%, #0b1732 62%, #081126 100%);
     padding: 100px 24px 80px;
     overflow: visible;
     margin-top: 100px;
@@ -102,7 +102,7 @@
 }
 
 .contactus-section {
-    background: linear-gradient(180deg, #122a55 0%, #0d1f42 50%, #081329 100%);
+    background: transparent;
     padding: 80px 24px 100px;
     color: #ffffff;
     perspective: 1200px;
