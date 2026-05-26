@@ -1,70 +1,70 @@
 import React, { useEffect, useRef } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import cloudImg from '../assets/cloud.webp';
+import cyberImg from '../assets/cybersecurity.webp';
 import compImg from '../assets/comprahensiveitsupport.webp';
 import webImg from '../assets/web&appDev.webp';
 import './styles/service2.css';
 
 const features = [
   {
-    icon: '☁️',
-    title: 'Cloud Infrastructure & Hosting',
-    desc: 'We architect and deploy highly available cloud environments on AWS, Azure, and GCP — purpose-built for your workload. Our infrastructure is elastic, auto-scaling, and monitored 24/7, so you never worry about capacity again.',
+    icon: '🔍',
+    title: 'Threat Detection & Response',
+    desc: 'We monitor your infrastructure 24/7/365 to detect, isolate, and neutralize advanced threats before they impact your operations. Our expert Security Operations Center (SOC) acts as your digital shield.',
     bullets: [
-      'Auto-scaling compute and managed databases',
-      'Multi-region redundancy & 99.99% SLA',
-      'Infrastructure-as-Code (Terraform / CloudFormation)',
-    ],
-  },
-  {
-    icon: '🔄',
-    title: 'Data Migration & Backup',
-    desc: 'Move your workloads to the cloud without disruption. Our zero-downtime migration methodology ensures your critical data is safely transferred, validated, and backed up at every step of the journey.',
-    bullets: [
-      'Live cutover with zero data loss',
-      'Automated incremental backups with point-in-time recovery',
-      'Cross-region disaster recovery planning',
+      '24/7/365 managed detection & response (MDR)',
+      'Security Information & Event Management (SIEM)',
+      'Rapid incident containment & forensic analysis',
     ],
   },
   {
     icon: '🛡️',
-    title: 'Cloud Security & Compliance',
-    desc: 'Security is built into every layer of our cloud deployments — not bolted on afterward. From identity management to network segmentation, we ensure your data stays protected and your business stays compliant.',
+    title: 'Network & Infrastructure Security',
+    desc: 'Secure your boundary and internal traffic against unauthorized access. We implement robust next-gen firewalls, zero-trust network access (ZTNA), and secure web gateways to seal off all threat vectors.',
     bullets: [
-      'Zero-trust IAM policies & role-based access control',
-      'ISO 27001, SOC 2, GDPR, HIPAA alignment',
-      'Real-time threat detection & automated remediation',
+      'Zero-Trust Network Access (ZTNA) frameworks',
+      'Next-generation firewalls & IDS/IPS systems',
+      'Secure SD-WAN and micro-segmentation',
     ],
   },
   {
-    icon: '🚀',
-    title: 'Managed Kubernetes & DevOps',
-    desc: 'Ship faster with our fully managed Kubernetes clusters and CI/CD pipelines. We handle the complexity of container orchestration so your developers can focus entirely on writing great code.',
+    icon: '💻',
+    title: 'Endpoint & Device Protection',
+    desc: 'Protect all entry points — laptops, servers, mobile devices, and IoT endpoints — from malicious software. Our advanced XDR platforms detect and stop ransomware and zero-day exploits in real time.',
     bullets: [
-      'EKS / AKS / GKE managed cluster setup',
-      'GitOps pipelines with ArgoCD & GitHub Actions',
-      'Helm chart management & rolling deployments',
+      'Endpoint Detection & Response (EDR) agents',
+      'Automated ransomware containment & quarantine',
+      'Mobile device management (MDM) policies',
     ],
   },
   {
-    icon: '📊',
-    title: 'Cloud Analytics & AI Platforms',
-    desc: 'Turn raw data into strategic advantage. We build scalable data lakes, real-time analytics pipelines, and AI/ML training environments that integrate seamlessly into your existing cloud stack.',
+    icon: '🎯',
+    title: 'Penetration Testing & Auditing',
+    desc: 'Identify your structural weaknesses before cybercriminals do. We conduct aggressive penetration tests, vulnerability scans, and security posture assessments to give you complete visibility into your exposure.',
     bullets: [
-      'Serverless data pipelines (Spark, Databricks, BigQuery)',
-      'ML model training & deployment at scale',
-      'Business intelligence dashboards & real-time alerts',
+      'Black-box, white-box, and gray-box penetration tests',
+      'Automated daily external & internal vulnerability scanning',
+      'Actionable remediation planning & advisory reports',
     ],
   },
   {
-    icon: '💰',
-    title: 'Cloud Cost Optimisation',
-    desc: 'Cloud bills can spiral fast. Our FinOps practice audits your spend, eliminates waste, and right-sizes resources — delivering an average of 35% cost reduction without sacrificing performance.',
+    icon: '🔒',
+    title: 'Data Privacy & Encryption',
+    desc: 'Keep your sensitive customer and proprietary files safe wherever they travel or rest. We deploy advanced cryptography, data loss prevention (DLP) solutions, and secure, immutable backup systems.',
     bullets: [
-      'Reserved & Spot instance strategy',
-      'Automated cost anomaly detection',
-      'Monthly FinOps reporting & governance',
+      'AES-256 data-at-rest & TLS data-in-transit encryption',
+      'Data Loss Prevention (DLP) rules and classification',
+      'Ransomware-proof, immutable offsite backup vaults',
+    ],
+  },
+  {
+    icon: '📋',
+    title: 'GRC & Security Governance',
+    desc: 'Navigate complex security frameworks with ease. We align your organization with major standards like SOC 2, ISO 27001, HIPAA, and GDPR — ensuring you satisfy audits and earn your clients\' complete trust.',
+    bullets: [
+      'SOC 2 Type II and ISO 27001 readiness & advisory',
+      'Internal security policies & compliance training',
+      'Vendor risk assessments & third-party auditing',
     ],
   },
 ];
@@ -72,29 +72,27 @@ const features = [
 const steps = [
   {
     num: '01',
-    title: 'Discovery & Assessment',
-    desc: 'We start with a thorough audit of your current infrastructure, applications, and data landscape. We map dependencies, identify risks, and define a clear cloud strategy aligned to your business goals.',
+    title: 'Discovery & Vulnerability Audit',
+    desc: 'We start with a thorough audit of your current systems, network configurations, software dependencies, and employee security habits to map out vulnerabilities and catalog your critical digital assets.',
   },
   {
     num: '02',
-    title: 'Architecture Design',
-    desc: 'Our cloud architects design a resilient, scalable target architecture — choosing the right services, regions, and patterns for your specific requirements, budget, and compliance obligations.',
+    title: 'Security Blueprint & Architecture',
+    desc: 'Our cybersecurity architects design a custom defense-in-depth framework tailored specifically to your risk profile, budget, and compliance obligations — establishing a strict zero-trust posture.',
   },
   {
     num: '03',
-    title: 'Phased Migration & Deployment',
-    desc: 'We migrate workloads in carefully sequenced phases, running parallel environments and automated validation checks to ensure continuity and give your team confidence at every milestone.',
+    title: 'System Hardening & Deployment',
+    desc: 'We implement advanced threat mitigation systems, enforce strict IAM policies, lock down endpoints, secure your web gateways, and run simulated exploit tests to verify your hardened environment.',
   },
   {
     num: '04',
-    title: 'Optimise & Manage',
-    desc: 'Post-migration, we continuously tune performance, security posture, and costs. Our managed services team provides round-the-clock monitoring, incident response, and proactive improvement sprints.',
+    title: 'Continuous SOC Monitoring',
+    desc: 'Post-deployment, we feed telemetry into our SOC for 24/7/365 active monitoring. We perform regular security sprints, conduct automated scans, and adapt your defenses to counter emerging global threats.',
   },
 ];
 
 function Service2() {
-  const pillRef = useRef(null);
-
   // Simple scroll-reveal
   useEffect(() => {
     const reveals = document.querySelectorAll('.s2-reveal');
@@ -117,37 +115,33 @@ function Service2() {
           {/* Left – text */}
           <div className="s2-hero-text">
             <span className="s2-badge">
-              <span /> Cloud Services
+              <span /> Cybersecurity Services
             </span>
             <h1>
-              Enterprise Cloud <span className="highlight">Solutions</span> Built for Growth
+              Enterprise Cyber <span className="highlight">Security</span> Built for Absolute Protection
             </h1>
             <p className="s2-lead">
-              We help ambitious businesses move, modernise, and maximise the cloud. Whether you're
-              migrating legacy systems, building cloud-native applications, or optimising runaway
-              costs — MetaMinds is your trusted cloud partner from strategy to execution.
+              We shield your ambitious business from modern threat actors and advanced persistent threats. Whether you need to secure your cloud environments, defend your endpoints, establish SOC monitoring, or satisfy complex compliance audits — MetaMinds is your dedicated cyber defense partner.
             </p>
             <p className="s2-sub">
-              With deep expertise across AWS, Azure, and Google Cloud Platform, we design
-              infrastructure that is secure by default, always-on, and ready to scale with your
-              ambitions.
+              With deep expertise in threat intelligence, digital forensics, and proactive defense, we engineer resilient security systems that are always vigilant, automated, and ready to block attack vectors before they disrupt your business.
             </p>
             <div className="s2-cta-row">
-              <button className="s2-btn-primary">Get a Free Cloud Audit</button>
-              <button className="s2-btn-outline">Explore Services ↓</button>
+              <button className="s2-btn-primary">Request a Security Audit</button>
+              <button className="s2-btn-outline">Explore Protections ↓</button>
             </div>
           </div>
 
           {/* Right – image */}
           <div className="s2-hero-image-wrap">
             <div className="s2-float-pill s2-pill-1">
-              <span className="pill-num">99.99%</span>
-              Uptime SLA
+              <span className="pill-num">24/7/365</span>
+              Active SOC monitoring
             </div>
-            <img className="s2-hero-img" src={cloudImg} alt="Cloud computing infrastructure" />
+            <img className="s2-hero-img" src={cyberImg} alt="Enterprise cybersecurity operations" />
             <div className="s2-float-pill s2-pill-2">
-              <span className="pill-num">35%</span>
-              Avg. Cost Saved
+              <span className="pill-num">100%</span>
+              Zero-Trust posture
             </div>
           </div>
         </div>
@@ -157,20 +151,20 @@ function Service2() {
       <div className="s2-stats-bar">
         <div className="s2-stats-inner">
           <div className="s2-stat">
-            <h3>200+</h3>
-            <p>Cloud migrations delivered</p>
+            <h3>500K+</h3>
+            <p>Daily cyber threats blocked</p>
           </div>
           <div className="s2-stat">
-            <h3>99.99%</h3>
-            <p>Average uptime across all managed environments</p>
+            <h3>&lt; 15 mins</h3>
+            <p>Average incident response time</p>
           </div>
           <div className="s2-stat">
-            <h3>35%</h3>
-            <p>Average cloud cost reduction for clients</p>
+            <h3>100%</h3>
+            <p>Security compliance audit pass rate</p>
           </div>
           <div className="s2-stat">
             <h3>24 / 7</h3>
-            <p>Dedicated monitoring & incident support</p>
+            <p>SOC continuous threat hunting</p>
           </div>
         </div>
       </div>
@@ -178,11 +172,10 @@ function Service2() {
       {/* ── FEATURE CARDS ── */}
       <section className="s2-features">
         <div className="s2-section-head">
-          <span className="s2-badge">What We Offer</span>
-          <h2>Our Full Cloud Services Portfolio</h2>
+          <span className="s2-badge">What We Protect</span>
+          <h2>Our Complete Cyber Security Portfolio</h2>
           <p>
-            From lifting and shifting your first workload to building a sophisticated multi-cloud
-            platform, we cover every dimension of enterprise cloud — end to end.
+            From threat monitoring and incident response to data privacy and GRC, we offer end-to-end cyber defense strategies designed to bulletproof your entire digital footprint.
           </p>
         </div>
         <div className="s2-cards-grid">
@@ -203,61 +196,53 @@ function Service2() {
       <section className="s2-why">
         <div className="s2-section-head">
           <span className="s2-badge">Why MetaMinds</span>
-          <h2>Cloud Expertise You Can Rely On</h2>
+          <h2>Cybersecurity Expertise You Can Trust</h2>
           <p>
-            We're not just consultants — we embed with your teams, own outcomes, and stay
-            accountable long after go-live.
+            We're not just passive observers — we embed with your engineering teams, establish security best practices, and stand ready to defend your business 24/7.
           </p>
         </div>
         <div className="s2-why-inner">
 
           <div className="s2-why-row">
             <div className="s2-why-img-wrap">
-              <img src={compImg} alt="Comprehensive IT support" />
+              <img src={compImg} alt="Comprehensive Cybersecurity Protection" />
             </div>
             <div className="s2-why-text">
-              <span className="s2-badge">Security-First Approach</span>
-              <h2>Your Data is Protected at Every Layer</h2>
+              <span className="s2-badge">Zero-Trust Paradigm</span>
+              <h2>Your Digital Assets Secured at Every Layer</h2>
               <p>
-                Security isn't an add-on — it's woven into every architecture decision we make.
-                Our cloud deployments follow zero-trust principles, enforce least-privilege access,
-                and ship with automated compliance guardrails so you're always audit-ready.
+                We assume breaches can happen, which is why we enforce continuous verification of credentials, endpoints, and requests. Our implementations follow zero-trust principles, enforce strict least-privilege policies, and ship with automated configuration guardrails.
               </p>
               <p>
-                We help you meet stringent regulations — ISO 27001, SOC 2, GDPR, and HIPAA —
-                without sacrificing developer velocity or operational agility.
+                We build solid, resilient defense shields that satisfy stringent regulations — including ISO 27001, SOC 2, GDPR, and HIPAA — without hindering your developer velocity.
               </p>
               <ul className="s2-check-list">
-                <li><span className="checkmark">✓</span>End-to-end encryption at rest and in transit</li>
-                <li><span className="checkmark">✓</span>Automated vulnerability scanning & patch management</li>
-                <li><span className="checkmark">✓</span>Continuous compliance monitoring with real-time alerts</li>
-                <li><span className="checkmark">✓</span>Penetration testing & cloud security posture management</li>
+                <li><span className="checkmark">✓</span>End-to-end data encryption at rest and in transit</li>
+                <li><span className="checkmark">✓</span>Automated vulnerability scanning & real-time remediation</li>
+                <li><span className="checkmark">✓</span>Continuous network segmentation & access containment</li>
+                <li><span className="checkmark">✓</span>Penetration testing & continuous cloud security checks</li>
               </ul>
             </div>
           </div>
 
           <div className="s2-why-row reverse">
             <div className="s2-why-img-wrap">
-              <img src={webImg} alt="Cloud development and DevOps" />
+              <img src={webImg} alt="Human Firewall Training" />
             </div>
             <div className="s2-why-text">
-              <span className="s2-badge">Developer Experience</span>
-              <h2>Ship Faster with Modern DevOps Practices</h2>
+              <span className="s2-badge">Human Firewall</span>
+              <h2>Empower Your Organization &amp; Build a Security Culture</h2>
               <p>
-                Our engineering teams implement GitOps workflows, containerised deployments, and
-                fully automated CI/CD pipelines that let your developers merge, test, and deploy
-                to production in minutes — not days.
+                Social engineering remains a primary entry point for modern corporate breaches. We complement robust technical controls with automated phishing training, compliance awareness programs, and strategic GRC advisory.
               </p>
               <p>
-                From infrastructure-as-code to self-service developer portals, we build an inner
-                loop that accelerates innovation while keeping your environments consistent,
-                reproducible, and drift-free.
+                From executive tabletop drills to regular internal simulations, we transform your employees from a primary vulnerability into your strongest line of defense.
               </p>
               <ul className="s2-check-list">
-                <li><span className="checkmark">✓</span>GitOps with ArgoCD, Flux, or GitHub Actions</li>
-                <li><span className="checkmark">✓</span>Automated testing gates & staging environments</li>
-                <li><span className="checkmark">✓</span>Developer self-service portals & internal tooling</li>
-                <li><span className="checkmark">✓</span>Observability stack: logs, metrics, and distributed tracing</li>
+                <li><span className="checkmark">✓</span>Automated, realistic email phishing simulation drills</li>
+                <li><span className="checkmark">✓</span>Bite-sized, engaging employee awareness training</li>
+                <li><span className="checkmark">✓</span>Executive policy design &amp; virtual CISO (vCISO) services</li>
+                <li><span className="checkmark">✓</span>Incident response plan creation &amp; tabletop exercises</li>
               </ul>
             </div>
           </div>
@@ -268,11 +253,10 @@ function Service2() {
       {/* ── PROCESS ── */}
       <section className="s2-process">
         <div className="s2-section-head">
-          <span className="s2-badge">Our Process</span>
-          <h2>How We Deliver Cloud Transformations</h2>
+          <span className="s2-badge">Our Defense Process</span>
+          <h2>How We Bulletproof Your Infrastructure</h2>
           <p>
-            Every engagement follows a battle-tested methodology designed to minimise risk,
-            maximise speed, and ensure your team is empowered every step of the way.
+            Every engagement follows a rigorous, battle-tested methodology designed to assess your current exposure, plug your gaps, and maintain a vigilant, secure state.
           </p>
         </div>
         <div className="s2-process-steps">
@@ -290,13 +274,12 @@ function Service2() {
 
       {/* ── CTA BANNER ── */}
       <section className="s2-cta-banner">
-        <h2>Ready to Move to the Cloud?</h2>
+        <h2>Ready to Secure Your Business?</h2>
         <p>
-          Let's start with a free, no-obligation cloud readiness assessment. Our experts will
-          review your current setup and give you a clear, actionable roadmap — at no cost.
+          Let's start with a comprehensive, no-obligation security posture assessment. Our experts will identify critical gaps in your setup and provide an actionable, high-priority defense roadmap — completely free.
         </p>
         <div className="s2-cta-row" style={{ justifyContent: 'center' }}>
-          <button className="s2-btn-primary">Book a Free Assessment</button>
+          <button className="s2-btn-primary">Book a Free Security Assessment</button>
           <button className="s2-btn-outline">Talk to an Expert</button>
         </div>
       </section>
