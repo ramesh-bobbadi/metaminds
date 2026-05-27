@@ -187,7 +187,7 @@ function Home() {
                 </div>
                 <h3>Modern, Scalable Web Platforms</h3>
                 <p>We build responsive, high-performance websites tailored for enterprise needs, ensuring speed, security, and scalability.</p>
-                <button className="service-button">Learn More →</button>
+                <Link to="/services1" state={{ activeTab: 'web' }} className="service-button">Learn More →</Link>
               </div>
               <div className="service-card reveal">
                 <div className="service-card__image service-card__image--2">
@@ -195,7 +195,7 @@ function Home() {
                 </div>
                 <h3>Cross-Platform Mobile Applications</h3>
                 <p>We design and develop secure, user-friendly mobile apps that deliver seamless experiences across iOS and Android.</p>
-                <button className="service-button">Learn More →</button>
+                <Link to="/services1" state={{ activeTab: 'app' }} className="service-button">Learn More →</Link>
               </div>
               <div className="service-card reveal">
                 <div className="service-card__image service-card__image--3">
@@ -203,10 +203,10 @@ function Home() {
                 </div>
                 <h3>Secure IT Systems</h3>
                 <p>We protect your digital assets with advanced security audits, compliance solutions, and threat prevention strategies.</p>
-                <button className="service-button">Learn More →</button>
+                <Link to="/services2" className="service-button">Learn More →</Link>
               </div>
             </div>
-            <button className="services-cta">See All Services →</button>
+            <Link to="/services" className="services-cta">See All Services →</Link>
           </div>
         </section>
 

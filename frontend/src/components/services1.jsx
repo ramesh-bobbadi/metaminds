@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import webDevImg from '../assets/webdev.webp';
@@ -126,9 +127,21 @@ const steps = [
 ];
 
 function Services1() {
-  const [activeTab, setActiveTab] = useState('web');
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(() => {
+    if (location.state && location.state.activeTab) {
+      return location.state.activeTab;
+    }
+    return 'web';
+  });
 
   const active = tabs.find((t) => t.id === activeTab);
+
+  useEffect(() => {
+    if (location.state && location.state.activeTab) {
+      setActiveTab(location.state.activeTab);
+    }
+  }, [location.state]);
 
   // Scroll-reveal
   useEffect(() => {
