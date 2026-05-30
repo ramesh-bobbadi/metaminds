@@ -15,7 +15,18 @@ function Home() {
   const reviewCarouselRef = useRef(null);
   const [visibleSections, setVisibleSections] = useState([]);
   const [showTopButton, setShowTopButton] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoSrc, setVideoSrc] = useState(null);
   const logoIds = Array.from({ length: 10 }, (_, i) => i + 1);
+
+  useEffect(() => {
+    // Lazy load the heavy background video after component mounts to guarantee a lag-free visual landing
+    const timer = setTimeout(() => {
+      setVideoSrc(bgvideo);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
+
   const scrollToAbout = () => aboutRef.current?.scrollIntoView({ behavior: "smooth" });
   const scrollCarousel = (carouselRef, direction) => {
     if (!carouselRef.current) return;
@@ -142,11 +153,22 @@ function Home() {
       <Header />
 
 
-      <main onClick={() => navhandle_state ? setNavhandle_state(false) : shandle_state ? setShandle_state(false) : true}>
+      <main>
         <section className="hero-section">
-          <video autoPlay loop muted playsInline className="bg-video">
-            <source src={bgvideo} type="video/mp4" />
-          </video>
+          <div className="bg-video-placeholder" style={{ opacity: videoLoaded ? 0 : 1 }}></div>
+          {videoSrc && (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              onCanPlayThrough={() => setVideoLoaded(true)}
+              className="bg-video"
+              style={{ opacity: videoLoaded ? 1 : 0, transition: 'opacity 1s ease' }}
+            >
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          )}
           <div className="hero-overlay">
             <div className="hero-card reveal">
               <div className="hero-image">
@@ -331,13 +353,6 @@ function Home() {
             </div>
           </div>
         </section>
-        <button
-          className={`go-top-button ${showTopButton ? 'visible' : ''}`}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          aria-label="Scroll to top"
-        >
-          ↑
-        </button>
       </main>
       <Footer />
     </>

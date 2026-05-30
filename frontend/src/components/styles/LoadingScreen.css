@@ -1,0 +1,231 @@
+.loading-wrapper {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #0e1b38 0%, #060d1a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: hidden;
+}
+
+.loading-wrapper.exit {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
+/* Background floating particles effect */
+.particles-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle, rgba(212, 175, 55, 0.08) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 215, 0, 0.06) 1.5px, transparent 1.5px);
+  background-size: 40px 40px, 60px 60px;
+  background-position: 0 0, 20px 30px;
+  opacity: 0.8;
+  animation: bgFloating 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes bgFloating {
+  0% {
+    background-position: 0 0, 20px 30px;
+  }
+  100% {
+    background-position: 40px 80px, 80px 150px;
+  }
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+
+/* Glowing Orbital Ring Loader - Gold Palette */
+.logo-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.loading-logo {
+  width: 90px;
+  height: auto;
+  object-fit: contain;
+  z-index: 5;
+  animation: logoPulse 2.5s ease-in-out infinite;
+}
+
+.glow-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+
+.glow-ring.double-ring {
+  width: 140px;
+  height: 140px;
+  border-top-color: #ffd700;
+  border-bottom-color: #b8860b;
+  animation: rotateClockwise 2s linear infinite;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(255, 215, 0, 0.15);
+}
+
+.glow-ring.single-ring {
+  width: 120px;
+  height: 120px;
+  border-left-color: #ffeb7a;
+  border-right-color: transparent;
+  animation: rotateCounterClockwise 1.5s linear infinite;
+  box-shadow: 0 0 10px rgba(255, 235, 122, 0.25);
+  opacity: 0.7;
+}
+
+@keyframes rotateClockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateCounterClockwise {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+  }
+  50% {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.7));
+  }
+}
+
+/* Loading Typography styling */
+.loading-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  display: flex;
+  gap: 1px;
+}
+
+.loading-title span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: letterFadeIn 0.5s ease forwards;
+}
+
+/* Stagger letter animations */
+.loading-title span:nth-child(1) { animation-delay: 0.1s; }
+.loading-title span:nth-child(2) { animation-delay: 0.18s; }
+.loading-title span:nth-child(3) { animation-delay: 0.26s; }
+.loading-title span:nth-child(4) { animation-delay: 0.34s; }
+.loading-title span:nth-child(5) { animation-delay: 0.45s; }
+.loading-title span:nth-child(6) { animation-delay: 0.53s; }
+.loading-title span:nth-child(7) { animation-delay: 0.61s; }
+.loading-title span:nth-child(8) { animation-delay: 0.69s; }
+.loading-title span:nth-child(9) { animation-delay: 0.77s; }
+
+@keyframes letterFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  }
+}
+
+.loading-subtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin: 0 0 32px;
+  opacity: 0;
+  animation: fadeInCaption 0.8s ease forwards 0.8s;
+  text-align: center;
+}
+
+@keyframes fadeInCaption {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Progress bar loading tracker - Gold touch */
+.progress-bar-container {
+  width: 240px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  animation: fadeInCaption 0.5s ease forwards 0.5s;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #b8860b, #ffd700, #ffea85);
+  border-radius: 99px;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Route transition loader overlay */
+.route-loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 24, 0.76);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000;
+  animation: fadeInOverlay 0.25s ease-out forwards;
+}
+
+.gold-orbit-spinner {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: #ffd700;
+  border-bottom-color: #b8860b;
+  animation: rotateClockwise 1s linear infinite;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
