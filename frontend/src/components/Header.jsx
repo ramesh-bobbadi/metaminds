@@ -15,7 +15,7 @@ function Header() {
           height="30px"
           viewBox="0 -960 960 960"
           width="30px"
-          fill="#ffd700"
+          fill="#0f95ef"
           onClick={() => {
             setShandle_state(true);
             setNavhandle_state(false);
@@ -30,7 +30,7 @@ function Header() {
           height="30px"
           viewBox="0 -960 960 960"
           width="30px"
-          fill="#ffd700"
+          fill="#0f95ef"
           onClick={() => {
             setNavhandle_state(true);
             setShandle_state(false);
@@ -59,40 +59,28 @@ function Header() {
       <div className="nav">
         <button type="button" className="nav-close" onClick={() => setNavhandle_state(false)}>×</button>
         <ul>
-          <li><Link to="/" onClick={() => setNavhandle_state(false)}>Home</Link></li>
-          <li><Link to="/about" onClick={() => setNavhandle_state(false)}>About</Link></li>
-          <li><Link to="/services" onClick={() => setNavhandle_state(false)}>Services</Link></li>
-          <li><Link to="/careers" onClick={() => setNavhandle_state(false)}>Careers</Link></li>
-          <li><Link to="/blogs" onClick={() => setNavhandle_state(false)}>Blogs</Link></li>
-          <li><Link to="/contactus" onClick={() => setNavhandle_state(false)}>Contact Us</Link></li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/services">Services</Link></li>
+          <li><Link to="/careers">Careers</Link></li>
+          <li style={{ margin: "0px 10px" }}><Link to="/blogs">Blogs</Link></li>
+          <li style={{ margin: "0px 35px" }}><Link to="/contactus">ContactUs</Link></li>
         </ul>
       </div>
     );
   };
 
   return (
-    <>
-      {navhandle_state && (
-        <div className="nav-backdrop" onClick={() => setNavhandle_state(false)}></div>
-      )}
-      {navhandle_state && <Nav />}
-      <header className={shandle_state ? 'search-open' : ''}>
-        <div className="header-left">
-          <div className="logo">
-            <Link to="/">
-              <img src={logo} style={{ height: "60px", width: "100px" }} alt="Meta Minds" />
-            </Link>
-          </div>
+    <header className={shandle_state ? 'search-open' : ''}>
+      <div className="header-left">
+        <div className="logo">
+          <Link to="/">
+            <img src={logo} style={{ height: "60px", width: "100px" }} alt="Meta Minds" />
+          </Link>
         </div>
-        {shandle_state ? (
-          <Searchbar />
-        ) : (
-          <div className="header-right">
-            <Headerdata />
-          </div>
-        )}
-      </header>
-    </>
+      </div>
+      {shandle_state ? <Searchbar /> : <div className="header-right">{navhandle_state ? <Nav /> : <Headerdata />}</div>}
+    </header>
   );
 }
 

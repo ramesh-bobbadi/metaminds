@@ -3,7 +3,6 @@ import Header from './Header';
 import Footer from './Footer';
 import './styles/Careers.css';
 import careersHeroImg from '../assets/hero.webp';
-import bgvideo from '../assets/cbgvideo.mp4';
 
 function Careers() {
   const [formData, setFormData] = useState({
@@ -45,11 +44,6 @@ function Careers() {
       <main className="careers-page">
         {/* Hero Section */}
         <section className="careers-hero">
-          <video autoPlay loop muted playsInline className="careers-bg-video">
-            <source src={bgvideo} type="video/mp4" />
-          </video>
-          <div className="careers-hero-overlay"></div>
-          
           <div className="careers-hero-content">
             <h1>Careers at Meta Minds</h1>
             <h2>Join us in building secure, scalable, and innovative technology.</h2>
@@ -68,7 +62,6 @@ function Careers() {
             <img src={careersHeroImg} alt="Engineers working together" />
           </div>
         </section>
-
 
         {/* Join Our Team Section */}
         <section id="join-team-section" className="join-team-section">

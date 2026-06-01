@@ -2,9 +2,7 @@
   background: linear-gradient(180deg, #13284e 0%, #0b1732 62%, #081126 100%);
   color: #f5f9ff;
   min-height: 100vh;
-  padding-top: 0;
-  perspective: 1400px;
-  transform-style: preserve-3d;
+  padding-top: 80px; /* Offset for header */
 }
 
 /* Hero Section */
@@ -12,62 +10,30 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 140px 5% 80px;
+  justify-content: space-between;
+  padding: 80px 5%;
   overflow: hidden;
-  min-height: 100vh;
+  min-height: 70vh;
 }
 
-/* Video Background */
-.careers-bg-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  object-fit: cover;
-}
-
-.careers-hero-overlay {
+/* Background curved shape matching the image */
+.careers-hero::before {
+  content: "";
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(8, 15, 40, 0.90) 0%, rgba(11, 23, 50, 0.85) 100%);
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* 3D Glassmorphic Hero Card wrapping the contents */
-.careers-hero-card {
-  width: min(1050px, 100%);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 32px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 40px;
-  z-index: 2;
-  position: relative;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
-  transform-style: preserve-3d;
-  perspective: 1000px;
+  left: -20%;
+  width: 140%;
+  height: 120%;
+  background: #1d3e72;
+  border-radius: 0 0 50% 50%;
+  transform: translateY(-20%) scaleX(1.1);
+  z-index: 0;
 }
 
 .careers-hero-content {
   position: relative;
+  z-index: 1;
   max-width: 50%;
-  text-align: left;
-  z-index: 2;
 }
 
 .careers-hero-content h1 {
@@ -75,24 +41,20 @@
   font-weight: 800;
   margin-bottom: 20px;
   line-height: 1.1;
-  color: #ffffff;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7), 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .careers-hero-content h2 {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 20px;
-  color: #7ec8ff;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  color: #d1e3ff;
 }
 
 .careers-hero-content p {
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.6;
   margin-bottom: 30px;
-  color: rgba(255, 255, 255, 0.92);
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.85);
   max-width: 600px;
 }
 
@@ -118,7 +80,7 @@
 
 .careers-hero-image {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   max-width: 45%;
 }
 
@@ -126,14 +88,8 @@
   width: 100%;
   height: auto;
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.careers-hero-image:hover img {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 30px 60px rgba(0, 147, 233, 0.35);
 }
 
 /* Join Our Team Section */
@@ -142,8 +98,6 @@
   text-align: center;
   position: relative;
   z-index: 1;
-  /* Ensure it's never invisible even before reveal fires */
-  min-height: 200px;
 }
 
 .join-team-section h2 {
@@ -154,16 +108,13 @@
 }
 
 .join-team-form-container {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #d9d9d9;
   border-radius: 30px;
   padding: 50px;
   max-width: 900px;
   margin: 0 auto;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: #f5f9ff;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  color: #333;
 }
 
 .join-team-form {
@@ -182,72 +133,52 @@
 .form-group label {
   font-weight: 600;
   font-size: 1.1rem;
-  color: #cbd5e1;
 }
 
 .form-group input,
 .form-group select {
   padding: 14px 20px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid #ccc;
   font-size: 1rem;
-  background-color: rgba(10, 20, 45, 0.6);
-  color: #ffffff;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-group input::placeholder {
-  color: #64748b;
-}
-
-.form-group select option {
-  background-color: #0b1732;
-  color: #ffffff;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
   border-color: #0f95ef;
-  box-shadow: 0 0 8px rgba(15, 149, 239, 0.5);
+  box-shadow: 0 0 0 2px rgba(15, 149, 239, 0.2);
 }
 
 .submit-button {
   margin-top: 10px;
   padding: 16px;
-  background-color: #0f95ef;
+  background-color: #1d3e72;
   color: white;
   border: none;
   border-radius: 12px;
   font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(15, 149, 239, 0.3);
+  transition: background-color 0.3s ease;
 }
 
 .submit-button:hover {
-  background-color: #0d82d4;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(15, 149, 239, 0.5);
+  background-color: #13284e;
 }
 
 @media (max-width: 992px) {
   .careers-hero {
-    padding-top: 120px;
-    padding-bottom: 60px;
-  }
-  
-  .careers-hero-card {
     flex-direction: column;
-    padding: 40px 24px;
-    gap: 30px;
     text-align: center;
+    padding-top: 120px;
   }
   
   .careers-hero-content {
     max-width: 100%;
-    text-align: center;
+    margin-bottom: 50px;
   }
 
   .careers-hero-content p {
@@ -255,31 +186,10 @@
   }
   
   .careers-hero-image {
-    max-width: 90%;
+    max-width: 80%;
   }
   
   .join-team-form-container {
     padding: 30px 20px;
   }
-}
-
-/* Scroll Reveal Classes */
-.reveal {
-  opacity: 0;
-  transform: translateY(60px) rotateX(18deg) scale(0.95);
-  transform-origin: top center;
-  transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.reveal.revealed {
-  opacity: 1;
-  transform: translateY(0) rotateX(0deg) scale(1);
-}
-
-/* join-team-section is a scroll target — make it always visible */
-.join-team-section.reveal {
-  opacity: 1;
-  transform: none;
-  transition: none;
 }
